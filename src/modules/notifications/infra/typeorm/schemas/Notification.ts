@@ -1,12 +1,12 @@
-import { Column, CreateDateColumn, Entity, Not, ObjectID, ObjectIdColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, ObjectID, ObjectIdColumn } from 'typeorm';
 
 @Entity('notifications')
-class Notificarion {
+class Notification {
     @ObjectIdColumn()
     id: ObjectID;
 
     @Column()
-    contenct: string;
+    content: string;
 
     @Column('uuid')
     recipient_id: string;
