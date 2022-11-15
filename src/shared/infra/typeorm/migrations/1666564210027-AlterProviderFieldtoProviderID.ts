@@ -16,7 +16,7 @@ export class AlterProviderFieldtoProviderID1666564210027 implements MigrationInt
         referencedColumnNames: ['id'],
         referencedTableName: 'users',
         onDelete: 'SET NULL',
-        onUpdate: ''
+        onUpdate: 'CASCADE'
       }))
     }
 
