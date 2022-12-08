@@ -9,7 +9,7 @@ import IStorageProvider from '@shared/container/providers/StorageProvider/models
 
 interface Request {
   user_id: string;
-  avatarFilename: any;
+  avatarFilename: string;
 }
 
 @injectable()
@@ -20,7 +20,7 @@ class UpdateUserAvatarService {
 
     @inject('StorageProvider')
     private storageProvider: IStorageProvider,
-  ) {}
+  ) { }
 
   public async execute({ user_id, avatarFilename }: Request): Promise<User> {
 
@@ -35,11 +35,11 @@ class UpdateUserAvatarService {
     }
     const fileName = await this.storageProvider.saveFile(avatarFilename)
 
-      user.avatar = fileName;
+    user.avatar = fileName;
 
-      await this.usersRepository.save(user);
+    await this.usersRepository.save(user);
 
-      return user;
+    return user;
   }
 }
 

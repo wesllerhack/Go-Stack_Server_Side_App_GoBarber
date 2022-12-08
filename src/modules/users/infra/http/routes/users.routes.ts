@@ -7,13 +7,13 @@ import uploadConfig from '@config/upload'
 import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAuthenticated';
 
 import UsersController from '../controller/UsersController';
-import UserAvatarController from '../controller/UserAvatarController';
-
+import UserAvatarController from '../controller/UserAvatarController'
 
 const usersRouter = Router();
 const usersController = new UsersController();
 const userAvatarController = new UserAvatarController();
-const upload = multer(uploadConfig);
+
+const upload = multer(uploadConfig.multer);
 
 usersRouter.post('/', celebrate({
   [Segments.BODY]: {
@@ -23,6 +23,6 @@ usersRouter.post('/', celebrate({
   }
 }), usersController.create);
 
-usersRouter.patch('/avatar', ensureAuthenticated,upload.single('avatar'), userAvatarController.update);
+usersRouter.patch('/avatar', ensureAuthenticated, upload.single('avatar'), userAvatarController.update);
 
 export default usersRouter;
